@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "projects": {
+    "frontend-angular": "apps/frontend-angular",
+    "frontend-angular-e2e": "apps/frontend-angular-e2e",
+    "frontend-react": "apps/frontend-react",
+    "frontend-react-e2e": "apps/frontend-react-e2e"
+  }
+}
