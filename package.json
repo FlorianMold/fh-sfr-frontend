@@ -1,6 +1,7 @@
 {
   "name": "fh-sfr-frontend",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "author": "Florian Mold",
   "license": "MIT",
   "scripts": {
     "ng": "nx",
@@ -15,6 +16,7 @@
     "@angular/common": "~13.2.0",
     "@angular/compiler": "~13.2.0",
     "@angular/core": "~13.2.0",
+    "@angular/elements": "^13.3.1",
     "@angular/forms": "~13.2.0",
     "@angular/platform-browser": "~13.2.0",
     "@angular/platform-browser-dynamic": "~13.2.0",
