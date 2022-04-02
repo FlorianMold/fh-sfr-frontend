@@ -1,0 +1,39 @@
+{
+  "projectType": "library",
+  "root": "libs/ui-angular",
+  "sourceRoot": "libs/ui-angular/src",
+  "prefix": "fh-sfr-frontend",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:ng-packagr-lite",
+      "outputs": ["dist/libs/ui-angular"],
+      "options": {
+        "project": "libs/ui-angular/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/ui-angular/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/ui-angular/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/ui-angular"],
+      "options": {
+        "jestConfig": "libs/ui-angular/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/ui-angular/src/**/*.ts", "libs/ui-angular/src/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

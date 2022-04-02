@@ -5,6 +5,7 @@
     "frontend-angular-e2e": "apps/frontend-angular-e2e",
     "frontend-react": "apps/frontend-react",
     "frontend-react-e2e": "apps/frontend-react-e2e",
+    "ui-angular": "libs/ui-angular",
     "web-components": "libs/web-components"
   }
 }
