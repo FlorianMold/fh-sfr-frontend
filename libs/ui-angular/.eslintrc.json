@@ -4,13 +4,13 @@
   "overrides": [
     {
       "files": ["*.ts"],
-      "extends": ["plugin:@nrwl/nx/angular", "plugin:@angular-eslint/template/process-inline-templates"],
+      "extends": [ "plugin:@angular-eslint/template/process-inline-templates"],
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
           {
             "type": "attribute",
-            "prefix": "fhSfrFrontend",
+            "prefix": "ui",
             "style": "camelCase"
           }
         ],
@@ -18,7 +18,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "fh-sfr-frontend",
+            "prefix": "ui",
             "style": "kebab-case"
           }
         ]

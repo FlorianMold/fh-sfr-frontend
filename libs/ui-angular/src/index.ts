@@ -1,1 +1,1 @@
-export * from './lib/ui-angular.module';
+export * from './lib/auto-complete';
