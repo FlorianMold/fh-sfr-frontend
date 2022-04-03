@@ -1,7 +1,14 @@
-import { StrictMode } from 'react';
-import * as ReactDOM from 'react-dom';
+import "@fh-sfr-frontend/web-components";
+
+import { StrictMode } from "react";
+import * as ReactDOM from "react-dom";
 
 
-import App from './app/app';
+import App from "./app/app";
 
-ReactDOM.render(<StrictMode><App /></StrictMode>, document.getElementById('root'));
+ReactDOM.render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+  document.getElementById("root")
+);
