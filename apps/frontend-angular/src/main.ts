@@ -1,3 +1,6 @@
+// Import our web-component library
+import '@fh-sfr-frontend/web-components';
+
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 

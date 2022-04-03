@@ -1,1 +1,10 @@
-<fh-sfr-frontend-nx-welcome></fh-sfr-frontend-nx-welcome>
+<div style="width: 640px; margin: 0 auto; text-align: center">
+  <h1>Angular Country Chooser</h1>
+
+  <p>
+    This is your current country: <strong>{{ currentCountry?.name || "Null" }}</strong>
+  </p>
+
+  <ui-autocomplete-web-component [countries]="countries" (onBlur)="handleOnBlur($event)">
+  </ui-autocomplete-web-component>
+</div>
