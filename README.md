@@ -1,105 +1,111 @@
+# Web components
+
+For this exercise I tried two approaches. There is a library for angular, that allows generation of web-components from angular-components. This library is called [@angular/elements](https://angular.io/guide/elements).
+
+## Angular Elements
+
+The `auto-complete` component, which was written with angular can be found here: 
+
+`libs/ui-angular/src/lib/auto-complete/auto-complete.component.ts`
+
+This file contains the component as well as the module for the component (SCAM).
+
+Afterwards i compiled the component with `@angular/elements`. The resulting component can be found here
+
+`libs/ui-angular/src/generated/auto-complete.js`
+
+I prettified the file for better readability. Even this simple component generates 9931 lines of code.
+
+The problem with this approach was, that i can't export generated component in my library. The generated component doesn't have any exports which i can use. So i had to copy the file to the `assets/`-folder of the application and import it with a script tag.
+
+`/apps/frontend-angular/src/index.html:`
+```html
+<body>
+  <fh-sfr-frontend-root></fh-sfr-frontend-root>
+  <script type="text/javascript" src="assets/auto-complete.js"></script>
+</body>
+```
+
+For me personally, this approach is not very suitable.
+
+If the native web-compoent and generated component from angular are compared some similarities can be found.
+
+## Native Web Components
+
+In my second approach i implemented a native web-component with typescript.
+
+The implementation is located in:
+
+`/libs/web-components/src/lib/auto-complete.ts`
+
+Implementing a simple web-component is pretty straightforward, but implementating a more complexing web-component can be very tricky. Complex logic has to be implemented by the developer, which would normally be done by a library like react or a framework like angular. For example i had to get the html-elements in javascript and append the option-elements to them. Implementating large templates might lead to very complex examples.
+
+### Using web-components in angular
+
+For angular to support custom-elements I had to add the `CUSTOM_ELEMENTS_SCHEMA` to the app-module of the application.
+
+```ts
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, HttpClientModule],
+  providers: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
+
+And i imported my web-components from the library inside the `main.ts`
+
+`/apps/frontend-angular/src/main.ts`:
+```ts
+import '@fh-sfr-frontend/web-components';
+```
+
+This was pretty simple compared to the approach with `@angular/elements`.
+
+### Using web-components in react
+
+For react to recognize web-components i had to add a `intrinsic.d.ts` file to the src/root of the application.
+
+```ts
+declare namespace JSX {
+  interface IntrinsicElements {
+    [elemName: string]: any;
+  }
+}
+```
+
+And i imported my web-components from the library inside the `main.tsx`
+
+`/apps/frontend-react/src/main.tsx`:
+```ts
+import '@fh-sfr-frontend/web-components';
+```
+
+### Results
+
+The following image shows the web-component used in angular:
+
+![Angular Web Componnt](img/angular-web-component.png)
+
+The following image shows the web-component used in react:
+
+![Angular Web Componnt](img/react-web-component.png)
 
 
-# FhSfrFrontend
+In both applications the web-component works very well. The style is contained inside the component, so the component looks the same in angular and react.
 
-This project was generated using [Nx](https://nx.dev).
+## Running the applications
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+Running angular-frontend:
 
-🔎 **Smart, Fast and Extensible Build System**
+```bash
+nx serve frontend-angular
+```
 
-## Quick Start & Documentation
+Running react-frontend:
 
-[Nx Documentation](https://nx.dev/angular)
-
-[10-minute video showing all Nx features](https://nx.dev/getting-started/intro)
-
-[Interactive Tutorial](https://nx.dev/tutorial/01-create-application)
-
-## Adding capabilities to your workspace
-
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
-
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
-
-Below are our core plugins:
-
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
-
-There are also many [community plugins](https://nx.dev/community) you could add.
-
-## Generate an application
-
-Run `ng g @nrwl/angular:app my-app` to generate an application.
-
-> You can use any of the plugins above to generate applications as well.
-
-When using Nx, you can create multiple applications and libraries in the same workspace.
-
-## Generate a library
-
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are shareable across libraries and applications. They can be imported from `@fh-sfr-frontend/mylib`.
-
-## Development server
-
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng g component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
-
-
-
-
-
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+```bash
+nx serve frontend-react
+```
