@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@fh-sfr-frontend/ui-angular": ["libs/ui-angular/src/index.ts"],
+      "@fh-sfr-frontend/util-types": ["libs/util-types/src/index.ts"],
       "@fh-sfr-frontend/web-components": ["libs/web-components/src/index.ts"]
     }
   },
