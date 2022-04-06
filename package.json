@@ -8,7 +8,9 @@
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "bundle:elements": "cat dist/libs/ui-angular/AutoCompleteWebComponent/runtime-es2015*.js dist/libs/ui-angular/AutoCompleteWebComponent/polyfills-es2015*.js dist/libs/ui-angular/AutoCompleteWebComponent/main-es2015*.js > libs/ui-angular/lib/auto-complete/autocomplete.js"
+
   },
   "private": true,
   "dependencies": {
